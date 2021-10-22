@@ -107,8 +107,17 @@ if ($_POST['logOut']) {
 
 if (isset($_POST['img_id'])) {
     $id = $_POST['img_id'];
+    $sql_select = "SELECT img_name,user_email FROM images WHERE img_id = '$id';";
+    $select_query = mysqli_query($db, $sql_select);
+    $img_name = mysqli_fetch_assoc($select_query);
     $sql = "DELETE FROM images WHERE img_id = '$id';";
-    $select_query = mysqli_query($db, $sql) or die;
+    $select_query = mysqli_query($db, $sql);
+    $filename = $img_name['img_name'];
+    $email = $img_name['user_email'];
+    $file_path = './uploads/' . $email . '/' . $filename;
+    echo $file_path;
+    unlink('./uploads/' . $email . '/' . $filename);
+
 }
 
 if (isset($_POST['img_comment_id'])) {

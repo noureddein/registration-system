@@ -77,7 +77,9 @@ function deleteImage(id) {
     $.ajax({
         url: 'server.php',
         method: "POST",
-        data: { "img_id": id },
+        data: {
+            "img_id": id
+        },
         success: function () {
             $.ajax({
                 url: 'server.php',
