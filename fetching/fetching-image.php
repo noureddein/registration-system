@@ -33,10 +33,6 @@ if ($results) {
         $select_query = mysqli_query($db, $sql);
         $results = mysqli_fetch_all($select_query);
 
-        // echo "<pre>";
-        // print_r($results);
-        // echo "</pre>";
-
         echo "<div>";
         foreach ($results as $val) {
             echo "<div class='comment_button_cont'>";
