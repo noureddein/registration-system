@@ -1,7 +1,6 @@
 <?php
-// include 'script.php';
 
-$serverName = 'localhost'; //data source name
+$serverName = 'localhost';
 $dbname = 'regForm';
 $dbUser = 'root';
 $dbPass = 'root';

@@ -44,7 +44,7 @@ session_start();
                 </div>
                 <div>
                     <p class="table_title" > All Users</p>
-                    <form class="form-inline" id="search_box" method="POST" action="fetch.php">
+                    <form class="form-inline" id="search_box" method="POST" action="adminPage.php">
                         <div class="form-group mx-sm-3 mb-2">
                             <label for="search_box" class="sr-only">Search</label>
                             <input type="text" class="form-control" id="inputPassword2" name="search_box_input" placeholder="Start searching...">
