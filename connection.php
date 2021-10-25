@@ -15,6 +15,6 @@ $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $c
 $serverName = 'localhost';
 $dbname = 'regForm';
 $dbUser = 'root';
-$dbPass = '';
+$dbPass = 'root';
 
 $db = mysqli_connect($serverName, $dbUser, $dbPass, $dbname) or die(mysqli_error($db));
