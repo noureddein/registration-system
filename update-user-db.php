@@ -17,4 +17,4 @@ $sql = "UPDATE users
     WHERE
         id = '$id';";
 
-$results = mysqli_query($conn, $sql) or die($mysqli->error);
+$results = mysqli_query($db, $sql) or die($mysqli->error);

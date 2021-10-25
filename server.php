@@ -8,13 +8,13 @@ $errors = array();
 // ! Sign Up!
 if (isset($_POST['submitForm'])) {
 
-    $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
-    $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
-    $email = mysqli_real_escape_string($conn, $_POST['userEmail']);
-    $userPass = mysqli_real_escape_string($conn, $_POST['userPass']);
-    $confPass = mysqli_real_escape_string($conn, $_POST['confPass']);
-    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
-    $userType = mysqli_real_escape_string($conn, $_POST['userType']);
+    $firstName = mysqli_real_escape_string($db, $_POST['firstName']);
+    $lastName = mysqli_real_escape_string($db, $_POST['lastName']);
+    $email = mysqli_real_escape_string($db, $_POST['userEmail']);
+    $userPass = mysqli_real_escape_string($db, $_POST['userPass']);
+    $confPass = mysqli_real_escape_string($db, $_POST['confPass']);
+    $gender = mysqli_real_escape_string($db, $_POST['gender']);
+    $userType = mysqli_real_escape_string($db, $_POST['userType']);
 
     if (empty($firstName)) {array_push($errors, "First Name is required");}
     if (empty($lastName)) {array_push($errors, "Last Name is required");}
@@ -35,7 +35,7 @@ if (isset($_POST['submitForm'])) {
     // ===> Check if the Email exist
     $sql = "SELECT * FROM users WHERE  email ='$email' LIMIT 1 ";
 
-    $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($db, $sql);
 
     $email_result = mysqli_fetch_assoc($result);
 
@@ -50,7 +50,7 @@ if (isset($_POST['submitForm'])) {
         $hash_user_password = password_hash($userPass, PASSWORD_DEFAULT);
         $sql = "INSERT INTO users (first_name, last_name, email, pass, user_type, gender) VALUES ('$firstName' , '$lastName' , '$email' , '$hash_user_password', '$userType', '$gender' )";
 
-        mysqli_query($conn, $sql);
+        mysqli_query($db, $sql);
 
         $_SESSION['name'] = $firstName . " " . $lastName;
         $_SESSION['success'] = "You are now registered";
@@ -67,8 +67,8 @@ if (isset($_POST['submitForm'])) {
 
 // ! Sign In!
 if (isset($_POST['sign-in'])) {
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $email = mysqli_real_escape_string($db, $_POST['email']);
+    $password = mysqli_real_escape_string($db, $_POST['password']);
     if (empty($email)) {
         array_push($errors, "empty");
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -76,7 +76,7 @@ if (isset($_POST['sign-in'])) {
     }
     if (empty($password)) {array_push($errors, "Password is required");}
     $sql = "SELECT * FROM users WHERE email = '$email'; ";
-    $results = mysqli_query($conn, $sql);
+    $results = mysqli_query($db, $sql);
     $data = mysqli_fetch_assoc($results);
     $verify = password_verify($password, $data['pass']);
     if (!$verify) {array_push($errors, "Incorrect Password");}
@@ -108,10 +108,10 @@ if ($_POST['logOut']) {
 if (isset($_POST['img_id'])) {
     $id = $_POST['img_id'];
     $sql_select = "SELECT img_name,user_email FROM images WHERE img_id = '$id';";
-    $select_query = mysqli_query($conn, $sql_select);
+    $select_query = mysqli_query($db, $sql_select);
     $img_name = mysqli_fetch_assoc($select_query);
     $sql = "DELETE FROM images WHERE img_id = '$id';";
-    $select_query = mysqli_query($conn, $sql);
+    $select_query = mysqli_query($db, $sql);
     $filename = $img_name['img_name'];
     $email = $img_name['user_email'];
     $file_path = './uploads/' . $email . '/' . $filename;
@@ -126,11 +126,11 @@ if (isset($_POST['img_comment_id'])) {
     $email = $_SESSION['email'];
     echo $text_area_comment;
     $sql = "INSERT INTO comments (img_comment_id, comment_text, email) VALUES ('$img_comment_id','$text_area_comment','$email');";
-    $select_query = mysqli_query($conn, $sql) or die;
+    $select_query = mysqli_query($db, $sql) or die;
 }
 
 if (isset($_POST['delete_all_comments'])) {
     $id = $_POST['delete_all_comments'];
     $sql = "DELETE FROM comments WHERE img_comment_id = '$id';";
-    $select_query = mysqli_query($conn, $sql) or die;
+    $select_query = mysqli_query($db, $sql) or die;
 }

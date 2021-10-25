@@ -161,7 +161,7 @@ function onclick_button() {
     }
 }
 
-document.getElementById('search_box').addEventListener("submit", search_box)
+// document.getElementById('search_box').addEventListener("submit", search_box)
 function search_box(event) {
     event.preventDefault();
     const search_query = event.target.search_box_input.value

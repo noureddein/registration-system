@@ -7,8 +7,8 @@ include '../connection.php';
 // get Images from Database
 $user_email = $_SESSION['email'];
 $sql = "SELECT * FROM images WHERE user_email = '$user_email';";
-$select_query = mysqli_query($conn, $sql) or die;
-$results = mysqli_fetch_all($select_query) or die(mysqli_error($conn));
+$select_query = mysqli_query($db, $sql) or die;
+$results = mysqli_fetch_all($select_query) or die(mysqli_error($db));
 
 if ($results) {
     foreach ($results as $val) {
@@ -30,7 +30,7 @@ if ($results) {
         $user_email = $_SESSION['email'];
         // $img_comment_id = $_POST['id'];
         $sql = "SELECT *  FROM comments WHERE email = '$user_email' AND img_comment_id = $val[0];";
-        $select_query = mysqli_query($conn, $sql);
+        $select_query = mysqli_query($db, $sql);
         $results = mysqli_fetch_all($select_query);
 
         echo "<div>";
