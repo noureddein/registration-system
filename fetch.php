@@ -23,20 +23,20 @@ echo "
 
 if ($search_query != '') {
     $users_query = "CONCAT(first_name,last_name,email) LIKE '%$search_query%';";
-    print_table_data($users_query, $db);
+    print_table_data($users_query, $conn);
 
 } elseif ($search_by_list == 'male' || $search_by_list == 'female') {
     $users_query = "gender = '$search_by_list';";
-    print_table_data($users_query, $db);
+    print_table_data($users_query, $conn);
 } elseif ($search_query == '') {
     $users_query = "user_type = 'user';";
-    print_table_data($users_query, $db);
+    print_table_data($users_query, $conn);
 }
 
-function print_table_data($query, $db)
+function print_table_data($query, $conn)
 {
     $users_query = "SELECT * FROM users WHERE " . $query;
-    $users_results = mysqli_query($db, $users_query);
+    $users_results = mysqli_query($conn, $users_query);
     $users_data = mysqli_fetch_all($users_results);
     if (count($users_data) == 0) {
         echo "<td colspan='7' style='text-align: center;' >No Records</td>";

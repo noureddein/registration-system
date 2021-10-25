@@ -3,7 +3,7 @@ session_start();
 include './connection.php';
 $user_id = $_POST['id'];
 $sql = "SELECT * FROM users WHERE id= '$user_id';";
-$result = mysqli_query($db, $sql) or die(mysqli_error($db));
+$result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 $data = mysqli_fetch_assoc($result);
 echo "
                 <div class='modal-content'>

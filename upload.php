@@ -32,7 +32,7 @@ if (isset($_POST['upload_img'])) {
                             images (img_name, user_email)
                         VALUES
                             ('$fileName', '$user_email');";
-                mysqli_query($db, $sql);
+                mysqli_query($conn, $sql);
 
                 header("location:index.php");
 
