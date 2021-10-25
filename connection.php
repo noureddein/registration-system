@@ -10,11 +10,3 @@ $active_group = 'default';
 $query_builder = true;
 // Connect to DB
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-
-// LOcal Database
-$serverName = 'localhost';
-$dbname = 'regForm';
-$dbUser = 'root';
-$dbPass = 'root';
-
-$db = mysqli_connect($serverName, $dbUser, $dbPass, $dbname) or die(mysqli_error($db));
