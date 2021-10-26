@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+
 html {
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 body {
   padding: 0;
@@ -155,11 +157,14 @@ body {
 }
 
 .dashboard_container {
+  position: fixed;
+  width: 35%;
+  height: 100vh;
   background-color: #252d38;
   color: #fff;
-  width: 25%;
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.3s ease 0s;
 }
 
 .dashboard_details {
@@ -285,7 +290,6 @@ body {
 .admin_page_main {
   background-color: rgb(91, 138, 138);
   width: 100%;
-  height: 100%;
 }
 
 .table_container {
@@ -314,6 +318,10 @@ body {
 #dashboard_details_admin {
   top: 0;
   background-color: rgb(105, 88, 121);
+}
+#user_data {
+  width: 100%;
+  overflow: auto;
 }
 /* ===== End ======== */
 
@@ -420,4 +428,15 @@ body {
 .alert {
   position: absolute;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  /* Side Menu */
+  .dashboard_container {
+    width: 100%;
+  }
+  .sign_in-main {
+    left: 5%;
+    width: 90%;
+  }
 }

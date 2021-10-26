@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'server.php';
-var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>

@@ -2,13 +2,8 @@
 session_start();
 include 'server.php';
 include 'connection.php';
-var_dump($_SESSION);
 
-if (count($_SESSION) == 0) {
-    header('location:login.php');
-}
-
-if (strtolower($_SESSION['userType']) == strtolower('user')) {
+if (strtolower($_SESSION['userType']) == strtolower('user') && count($_SESSION) != 0) {
     ?>
   <!DOCTYPE html>
   <html lang="en">

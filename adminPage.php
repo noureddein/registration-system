@@ -2,9 +2,6 @@
 session_start();
 // include 'server.php';
 
-echo "<pre>";
-print_r(count($_SESSION));
-echo "</pre>";
 if (strtolower($_SESSION['userType']) == strtolower('admin')) {
     ?>
 <!DOCTYPE html>
@@ -22,7 +19,7 @@ if (strtolower($_SESSION['userType']) == strtolower('admin')) {
                 <div class="hamburger">
                     <div></div>
                 </div>
-        </div>
+            </div>
     <section class="dashboard_container dis-f-c" id="dashboard_details_admin">
         <div class="dashboard_details dis-f-c" >
         <img src="https://via.placeholder.com/150C/O https://placeholder.com/" alt="user profile photo">
