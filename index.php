@@ -2,9 +2,13 @@
 session_start();
 include 'server.php';
 include 'connection.php';
+var_dump($_SESSION);
+
 if (count($_SESSION) == 0) {
     header('location:login.php');
-} else {
+}
+
+if (strtolower($_SESSION['userType']) == strtolower('user')) {
     ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -59,4 +63,6 @@ if (count($_SESSION) == 0) {
 
 
 <?php
+} else {
+    header('location:login.php');
 }

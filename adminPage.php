@@ -1,7 +1,12 @@
 <?php
 session_start();
 // include 'server.php';
-?>
+
+echo "<pre>";
+print_r(count($_SESSION));
+echo "</pre>";
+if (strtolower($_SESSION['userType']) == strtolower('admin')) {
+    ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -70,5 +75,7 @@ session_start();
 
 </body>
 </html>
-
-
+<?php
+} else {
+    header('location:login.php');
+}
