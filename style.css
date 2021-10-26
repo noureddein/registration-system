@@ -219,7 +219,7 @@ body {
   position: fixed;
   top: 0.4rem;
   left: 0.4rem;
-  z-index: 1;
+  z-index: 3;
 }
 .menu-wrap .toggler {
   position: absolute;
